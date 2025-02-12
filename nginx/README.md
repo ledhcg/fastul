@@ -17,7 +17,7 @@ There are two ways to use this script:
 ### Method 1: Run directly from URL
 
 ```bash
-curl -s https://raw.githubusercontent.com/ledhcg/fastul/main/nginx/nginx-ssl.sh | sudo bash -s example.com 8080 admin@example.com
+curl -s https://raw.githubusercontent.com/ledhcg/fastul/master/nginx/nginx-ssl.sh | sudo bash -s example.com 8080 admin@example.com
 ```
 
 Replace:
@@ -30,7 +30,7 @@ Replace:
 Download the script:
 
 ```bash
-curl -O https://raw.githubusercontent.com/ledhcg/fastul/main/nginx/nginx-ssl.sh
+curl -O https://raw.githubusercontent.com/ledhcg/fastul/master/nginx/nginx-ssl.sh
 chmod +x nginx-ssl.sh
 ```
 
