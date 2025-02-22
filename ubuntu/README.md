@@ -53,6 +53,11 @@ Then run it:
    - Sets up PM2 startup script for process management
    - Configures automatic startup on system boot
 
+5. Installs and Configures Nginx Web Server
+   - Installs the latest version of Nginx
+   - Enables and starts Nginx service
+   - Configures automatic startup on system boot
+
 ## Features
 
 - Colored output with informative icons
@@ -80,12 +85,14 @@ After installation, you'll have access to:
 - Latest version of Yarn
 - Latest version of PM2
 - Latest version of NVM
+- Latest version of Nginx
 
 ## Notes
 
 - The script requires an internet connection
 - Some operations may require sudo privileges
 - PM2 startup configuration may require additional manual steps
+- Nginx installation requires sudo privileges
 - The script will update existing installations if components are already present
 
 ## Support

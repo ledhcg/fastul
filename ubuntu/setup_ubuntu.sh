@@ -150,6 +150,38 @@ configure_pm2_startup() {
     print_success "PM2 configuration completed!"
 }
 
+install_nginx() {
+    print_install "Installing Nginx web server..."
+    
+    if command_exists nginx; then
+        print_warning "Nginx is already installed. Version: $(nginx -v 2>&1)"
+        return 0
+    fi
+    
+    if [ "$EUID" -ne 0 ]; then
+        print_warning "Please run the following commands with sudo to install Nginx:"
+        echo "sudo apt update"
+        echo "sudo apt install -y nginx"
+        echo "sudo systemctl enable nginx"
+        echo "sudo systemctl start nginx"
+        return 0
+    else
+        apt update
+        apt install -y nginx
+        systemctl enable nginx
+        systemctl start nginx
+        
+        if [ $? -eq 0 ]; then
+            print_success "Nginx installed and started successfully!"
+            print_message "Nginx version: $(nginx -v 2>&1)"
+            return 0
+        else
+            print_error "Nginx installation failed"
+            return 1
+        fi
+    fi
+}
+
 # Main installation process
 main() {
     echo "=== STARTING SETUP UBUNTU ==="
@@ -164,6 +196,9 @@ main() {
     
     echo -e "\nStep 4: Installing and Configuring PM2 Process Manager"
     install_pm2 || exit 1
+    
+    echo -e "\nStep 5: Installing Nginx Web Server"
+    install_nginx || exit 1
     
     echo -e "\n=== SETUP UBUNTU COMPLETED ==="
     print_success "Ubuntu environment has been successfully set up!"
