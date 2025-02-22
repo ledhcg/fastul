@@ -1,11 +1,18 @@
-# Ubuntu Development Environment Setup Script
+# Ubuntu/macOS Development Environment Setup Script
 
-This script automates the process of setting up a development environment on Ubuntu/Debian-based systems by installing and configuring essential development tools.
+This script automates the process of setting up a development environment on Ubuntu/Debian-based systems and macOS by installing and configuring essential development tools.
 
 ## Prerequisites
 
+For Ubuntu/Debian:
 - Ubuntu/Debian-based system
 - Root or sudo access
+- Internet connection
+- Either `curl` or `wget` installed
+
+For macOS:
+- macOS system
+- Homebrew (will be prompted to install if not present)
 - Internet connection
 - Either `curl` or `wget` installed
 
@@ -13,13 +20,13 @@ This script automates the process of setting up a development environment on Ubu
 
 There are two ways to use this script:
 
-### Method 1: Run directly from URL
+### Method 1: Run directly from URL with sudo
 
 ```bash
-curl -s https://raw.githubusercontent.com/ledhcg/fastul/master/ubuntu/setup_ubuntu.sh | bash
+curl -s https://raw.githubusercontent.com/ledhcg/fastul/master/ubuntu/setup_ubuntu.sh | sudo bash
 ```
 
-### Method 2: Download and run locally
+### Method 2: Download and run with sudo
 
 Download the script:
 
@@ -31,7 +38,7 @@ chmod +x setup_ubuntu.sh
 Then run it:
 
 ```bash
-./setup_ubuntu.sh
+sudo ./setup_ubuntu.sh
 ```
 
 ## What the Script Does
@@ -54,9 +61,10 @@ Then run it:
    - Configures automatic startup on system boot
 
 5. Installs and Configures Nginx Web Server
-   - Installs the latest version of Nginx
+   - Installs the latest version of Nginx (via apt on Ubuntu/Debian or Homebrew on macOS)
    - Enables and starts Nginx service
    - Configures automatic startup on system boot
+   - Provides configuration file location and access URL
 
 ## Features
 
@@ -92,7 +100,8 @@ After installation, you'll have access to:
 - The script requires an internet connection
 - Some operations may require sudo privileges
 - PM2 startup configuration may require additional manual steps
-- Nginx installation requires sudo privileges
+- Nginx installation requires sudo privileges on Ubuntu/Debian systems
+- On macOS, Nginx is installed via Homebrew and runs on port 8080 by default
 - The script will update existing installations if components are already present
 
 ## Support
